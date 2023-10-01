@@ -2,7 +2,7 @@ pragma solidity >=0.5.0;
 
 contract Certificate {
 
-    /** Struct */
+    /** Struct    **/
 
     struct Cert {
         string userName;
