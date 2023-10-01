@@ -2,7 +2,7 @@ const Assert = require('assert');
 const BN = require('bn.js');
 
 const web3 = require('./web3.js');
-
+   
 function Utils() {}
 
 function assertExpectedMessage(message, error) {

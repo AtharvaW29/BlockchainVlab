@@ -1,7 +1,7 @@
 const { AccountProvider } = require('../test_lib/utils');
 
 const Certificate = artifacts.require('Certificate');
-
+      
 contract('Certificate::addCertificate', async (accounts) => {
   const accountProvider = new AccountProvider(accounts);
   const user = accountProvider.get();
