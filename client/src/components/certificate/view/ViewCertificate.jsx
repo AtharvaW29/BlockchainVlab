@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import web3 from '../../../getWeb3';
-// import CertificateContract from '../../../contracts/Certificate.json';
+import CertificateContract from '../../../contracts/Certificate.json';
 import FailedBlockchain from '../../other/error/failed/Failed';
 
-import CertificateContract from '../../../contracts/Contract.json';
+// import CertificateContract from '../../../contracts/Contract.json';
 
 import './ViewCertificate.css';
 
@@ -59,7 +59,7 @@ class ViewCertificate extends Component {
 
             const instance = new web3.eth.Contract(
                 CertificateContract.abi,
-                CertificateContract.address,
+                '0xD84A684B6E70F225a51491e485Aa4f3EDD76a722',
             );
 
             this.setState({
@@ -96,6 +96,7 @@ class ViewCertificate extends Component {
                 isFetched: true,
             });
         }
+        console.log(certificateDetailsResponse)
         this.setCertificateDetails(certificateDetailsResponse);
     }
 

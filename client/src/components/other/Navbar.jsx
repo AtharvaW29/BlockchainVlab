@@ -7,7 +7,7 @@ class Navbar extends Component {
         return (
             <div className="navbar">
                 <nav className="navbar navbar-expand-lg navbar-dark">
-                    <a className="navbar-brand" href="/">Prizma</a>
+                    <a className="navbar-brand" href="/">Certify_Dapp</a>
                     <button
                         className="navbar-toggler"
                         type="button"

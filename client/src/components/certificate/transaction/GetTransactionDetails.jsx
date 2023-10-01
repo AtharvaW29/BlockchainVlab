@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import web3 from '../../../getWeb3';
-// import CertificateContract from '../../../contracts/Certificate.json';
+import CertificateContract from '../../../contracts/Certificate.json';
 import FailedBlockchain from '../../other/error/failed/Failed';
-import CertificateContract from '../../../contracts/Contract.json';
+// import CertificateContract from '../../../contracts/Contract.json';
 
 import './GetTransactionDetails.css';
 
-const etherscanUrl = 'https://rinkeby.etherscan.io/tx';
+const etherscanUrl = 'https://etherscan.io/';
 class GetTransactionDetails extends Component {
     constructor(props) {
         super(props);
@@ -51,8 +51,9 @@ class GetTransactionDetails extends Component {
 
             const instance = new web3.eth.Contract(
                 CertificateContract.abi,
-                CertificateContract.address,
+                '0xD84A684B6E70F225a51491e485Aa4f3EDD76a722',
             );
+            console.log('hello', instance)
 
             this.setState({
                 web3,

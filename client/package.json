@@ -3,8 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@material-ui/core": "^4.12.4",
+    "@mui/icons-material": "^5.14.11",
+    "@mui/material": "^5.14.3",
+    "@mui/styled-engine-sc": "^5.12.0",
+    "@mui/styles": "^5.14.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-loading-overlay": "^1.0.1",
     "react-modal": "^3.11.2",
     "react-router-dom": "^5.1.2",
@@ -12,11 +19,12 @@
     "react-spinners": "^0.8.3",
     "reactjs-popup": "^1.5.0",
     "reactstrap": "^8.4.1",
+    "styled-components": "^5.3.11",
     "web3": "1.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
