@@ -18,9 +18,9 @@ class Routes extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ LandingPage } />
-          <Route path="/add-certificate" component={ AddCertificate } />
-          <Route path="/view-certificate" component={ ViewCertificate } />
-          <Route path="/get-transaction-details" component={ GetTransactionDetails } />
+          <Route path="/Simulation" component={ AddCertificate } />
+          <Route path="/Observation" component={ ViewCertificate } />
+          <Route path="/Validation" component={ GetTransactionDetails } />
           <Route path="/AboutUs" component={ HowItWorks } />
           <Route path="/Expt1" component={ ExptOne } />
           <Route path="/Assignment" component={ Assignment } />

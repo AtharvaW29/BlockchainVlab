@@ -135,7 +135,7 @@ class GetTransactionDetails extends Component {
                                 Get Transaction Details
                         </button>
                     </div>
-                    <div className="view-on-etherscan">
+                    {/* <div className="view-on-etherscan">
                         <a
                             className="btn btn-primary"
                             href={`${etherscanUrl}/${this.state.transactionHash}`}
@@ -144,7 +144,7 @@ class GetTransactionDetails extends Component {
                         >
                             View on Etherscan
                         </a>
-                    </div>
+                    </div> */}
                     <div>
                         {this.state.isFetched ?
                             <div className="transaction-details">

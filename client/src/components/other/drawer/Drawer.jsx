@@ -25,9 +25,9 @@ const drawerWidth = 240;
 const pages = [{id:1, name: 'Aim', path: '/Expt1'},
                {id:2, name: 'Theory', path: '/Theory'},
                {id:3, name: 'Procedure', path: '/Procedure'},
-               {id:4, name: 'Simulation', path: '/add-certificate'},
-               {id:5, name: 'Observation', path: '/view-certificate'},
-               {id:6, name: 'Assignment', path: '/Assignment'}]
+               {id:4, name: 'Simulation', path: '/Simulation'},
+               {id:5, name: 'Observation', path: '/Observation'},
+               {id:6, name: 'Validation', path: '/Validation'}]
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
