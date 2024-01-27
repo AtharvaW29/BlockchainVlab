@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -21,13 +20,6 @@ import { Link } from 'react-router-dom';
 
 
 const drawerWidth = 240;
-
-const pages = [{id:1, name: 'Aim', path: '/Expt1'},
-               {id:2, name: 'Theory', path: '/Theory'},
-               {id:3, name: 'Procedure', path: '/Procedure'},
-               {id:4, name: 'Simulation', path: '/Simulation'},
-               {id:5, name: 'Observation', path: '/Observation'},
-               {id:6, name: 'Validation', path: '/Validation'}]
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -74,7 +66,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft({pages}) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -102,9 +94,6 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-          Experiment 1: Creating a Block
-          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -141,51 +130,9 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
         <Divider />
-        {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Typography style={{
-            marginBottom: 100,
-            fontFamily: 'Poppins',
-            fontSize: 32,
-            fontStyle: 'Bold',
-            fontWeight: 900
-        }}>
-            Experiment 1: Creating a Block 
-        </Typography>
-        <Typography  style={{
-            fontFamily: 'Poppins',
-            fontSize: 28,
-            fontWeight: 900,
-        }}>
-        Objectives:<br/>
-        </Typography>
-        <Typography paragraph style={{
-          fontFamily: 'Poppins',
-          fontSize: 22,
-          fontWeight: 600,
-          textAlign:'left'
-        }}>
-          <ul>
-            <li>To understand the concept of a block and its components.</li>
-            <li>To learn how to create a block using a blockchain client.</li>
-            <li>To learn how to add a block to the blockchain.</li>
-            <li>To understand the importance of the hash in verifying the integrity of a block.</li>
-            <li>To understand the process of linking blocks together to form a blockchain.</li>
-          </ul>
-        </Typography>
       </Main>
     </Box>
   );

@@ -11,6 +11,9 @@ import Assignment from './pages/experiment1/Assignment';
 import ExptOne from './pages/experiment1/ExptOne';
 import Procedure from './pages/experiment1/Procedure';
 import Theory from './pages/experiment1/Theory';
+import ExptTwo from './pages/experiment2/ExptTwo';
+import ExptThree from './pages/experiment3/ExptThree';
+import ExptFour from './pages/experiment4/ExptFour';
 
 class Routes extends Component {
   render () {
@@ -26,6 +29,9 @@ class Routes extends Component {
           <Route path="/Assignment" component={ Assignment } />
           <Route path="/Procedure" component={ Procedure } />
           <Route path="/Theory" component={Theory} />
+          <Route path="/Expt2" component={ ExptTwo } />
+          <Route path="/Expt3" component={ ExptThree } />
+          <Route path="/Expt4" component={ ExptFour } />
           <Route component={ Page404 } />
         </Switch>
       </BrowserRouter>

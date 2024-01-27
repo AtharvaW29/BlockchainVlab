@@ -8,10 +8,10 @@ import image4 from "../../../assets/images/Expt4.jpg";
 import image5 from "../../../assets/images/Expt5.jpg";
 
 const products =[
-    {id:1, name: 'Experiment 1: Creating a Block', description: 'Experiment description', image: image1,  path: '/Expt1'},
-    {id:2, name: 'Experiment 2: Consensus Protocol Comparison', description: 'Experiment description', image: image2,  path: '/Expt2'},
-    {id:3, name: 'Experiment 3: Network Scalability and Consumption Analysis ', description: 'Experiment description', image: image3, path: '/Expt3'},
-    {id:4, name: 'Experiment 4: Smart Contract Execution Efficiency', description: 'Experiment description', image: image4, path: '/Expt4'},
+    {id:1, name: 'Experiment 1: Creating a Block', description: 'Create a block for given logic', image: image1,  path: '/Expt1'},
+    {id:2, name: 'Experiment 2: Block Validation', description: 'Perform Expt1 before attempting', image: image2,  path: '/Expt2'},
+    {id:3, name: 'Experiment 3: Blockchain Emulator', description: 'Verify the working of a virtual blockchain emulator', image: image3, path: '/Expt3'},
+    {id:4, name: 'Experiment 4: Smart Contract Execution', description: 'Anatomy and Mining of Block', image: image4, path: '/Expt4'},
     {id:5, name: 'Experiment 5: Network Security and Attack Resilience', description: 'Experiment description', image: image5, path: '/Expt5'}
 ]
 

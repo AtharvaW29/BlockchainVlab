@@ -153,7 +153,7 @@ class AddCertificate extends Component {
         }
 
         console.log('add cert params :-', addCertificateParams);
-        try{const txReceipt = await contract.methods.addCertificate(
+        try{const txReceipt = await contract.methods.addCertificate( 
             addCertificateParams.userName,
             addCertificateParams.id,
             addCertificateParams.courseName,
