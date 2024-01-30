@@ -1,32 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Typography, TextField, Grid, CardContent, Card, Button } from '@mui/material'
 import { SHA256 } from 'crypto-js';
 
 const ExptFour = () => {
 
+    const [backgroundColor, setBackgroundColor] = useState('lightseagreen');
     const [blockNo, setBlockNo] = useState(1);
     const [nonce, setNonce] = useState(0);
     const [data, setData] = useState('');
     const [prevHash, setPrevHash] = useState('0xea8834de1efb07f2bce756291b3e108123ba96456aec14283f072c4fcfd1324d');
     const mineBlock = () => {
-        const baseHash = "0xea8834de1efb07f2bce756291b3e108123ba96456aec14283f072c4fcfd1324d";
         const difficulty = 4;
-
         let hash = '';
+        let nonceAttempt = nonce;
 
-        do {
-            const hashInput = blockNo + nonce + data + prevHash;
+        while (hash.substring(0, difficulty) !== '0'.repeat(difficulty)) {
+            const hashInput = blockNo + nonceAttempt + data + prevHash;
             hash = SHA256(hashInput).toString();
-            setNonce(prevNonce => prevNonce + 1);
-        }while (hash.substring(0, difficulty) !== '0'.repeat(difficulty));
+            nonceAttempt++;
+        }
 
+        setNonce(nonceAttempt);
         setPrevHash(hash);
+        setBackgroundColor('lightseagreen');
         };
 
 
     const onMineButtonClick = () => {
-        mineBlock();
-        console.log("Mined the block!")
+        if (setBlockNo != blockNo || setNonce != nonce || setData != data) {
+          mineBlock();
+        }
     };
 
   return (
@@ -39,7 +42,7 @@ const ExptFour = () => {
 
     <div style={{alignItems: "center", marginTop: 50}}>
         <h2>Mining the Block</h2>
-    <Card sx={{ width: 700, backgroundColor: "lightseagreen", alignItems: "center"}}>
+    <Card sx={{ width: 700, backgroundColor: backgroundColor, alignItems: "center"}}>
       <CardContent>
         <Grid
           container
@@ -53,7 +56,7 @@ const ExptFour = () => {
               fullWidth
               type="number"
               value={blockNo}
-              onChange={(e)=>setBlockNo(e.target.value)}
+              onChange={(e)=>{setBlockNo(e.target.value); setBackgroundColor('red');}}
             ></TextField>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -63,7 +66,7 @@ const ExptFour = () => {
               fullWidth
               type="number"
               value={nonce}
-              onChange={(e)=>setNonce(e.target.value)}
+              onChange={(e)=>{setNonce(e.target.value); setBackgroundColor('red');}}
             ></TextField>
           </Grid>
           <Grid item xs={12}>
@@ -74,7 +77,7 @@ const ExptFour = () => {
               rows={4}
               fullWidth
               value={data}
-              onChange={(e)=>setData(e.target.value)}
+              onChange={(e)=>{setData(e.target.value); setBackgroundColor('red');}}
             ></TextField>
           </Grid>
           <Grid item xs={12}>
