@@ -9,7 +9,7 @@ const Block = ({ block }) => {
 
 
   return (
-    <Card sx={{ maxWidth: 445, backgroundColor: "lightseagreen"}}>
+    <Card sx={{ maxWidth: 445, backgroundColor: block.color}}>
       <CardContent>
         <Grid
           container
@@ -67,7 +67,7 @@ const Block = ({ block }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={onMineButtonClick}
+          onClick={block.mineBlock}
           style={{ marginTop: "50px" }}
         >
           Mine

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Typography, TextField, Grid, CardContent, Card, Button } from '@mui/material'
 import { SHA256 } from 'crypto-js';
 
@@ -27,8 +27,11 @@ const ExptFour = () => {
 
 
     const onMineButtonClick = () => {
-        if (setBlockNo != blockNo || setNonce != nonce || setData != data) {
+        if (setBlockNo !== blockNo || setNonce !== nonce || setData !== data) {
           mineBlock();
+        }
+        if (setBlockNo == blockNo || setNonce == nonce || setData == data) {
+          console.log('No Change')
         }
     };
 
