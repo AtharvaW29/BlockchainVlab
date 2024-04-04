@@ -14,13 +14,15 @@ import Theory from './pages/experiment1/Theory';
 import ExptTwo from './pages/experiment2/ExptTwo';
 import ExptThree from './pages/experiment3/ExptThree';
 import ExptFour from './pages/experiment4/ExptFour';
+import Homepage from './pages/Homepage/Homepage'
 
 class Routes extends Component {
   render () {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ LandingPage } />
+          <Route exact path="/" component={ Homepage } />
+          <Route exact path="/Experiments" component={ LandingPage } />
           <Route path="/Simulation" component={ AddCertificate } />
           <Route path="/Observation" component={ ViewCertificate } />
           <Route path="/Validation" component={ GetTransactionDetails } />

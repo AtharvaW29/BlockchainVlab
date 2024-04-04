@@ -10,6 +10,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import Dropdown from './Dropdown'
+import {Nav,NavLink,Bars,NavMenu,NavBtn,NavBtnLink } from './Navbarelements'
 
 const drawerWidth = 0;
 
@@ -28,77 +30,101 @@ function NavBar() {
   };
   
   return (
-    <AppBar position="static" style={{backgroundColor:'#8587FF'}} >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                <Link to={page.path}>
-                <Typography textAlign="center"  sx={{
-                  mr: 2,
-                  display: { xs: 'flex', md: 'none' },
-                  flexGrow: 1,
-                  fontFamily: 'Poppins',
-                  fontStyle: 'normal',
-                  fontWeight: 600,
-                  fontSize: '13px',
-                  lineHeight: '20px', 
-                  color: '#000000',
-                  textDecoration: 'none'
-                }}>{page.name}</Typography></Link>
-              </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-                <Link to={page.path}>
-                <Button
-                  key={page.id}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block',
-                  fontFamily: 'Poppins',
-                  fontStyle: 'normal',
-                  fontWeight: 600,
-                  fontSize: '13px',
-                  lineHeight: '20px', }}
-                >
-                  {page.name}
-                </Button></Link>
-            ))}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
-}
+      <>
+        <Nav>
+          <NavLink to='/'>
+            {<img className='img'src={require("./logo.jpeg")} alt='logo' /> }
+          </NavLink>
+          <Bars />
+          <NavMenu>
+             <NavLink to='/' activeStyle>
+              Home
+            </NavLink>
+            <NavLink to='/Experiments' activeStyle>
+              Experiments
+            </NavLink>
+            <NavLink to='./AboutUs' activeStyle>
+              About Us
+            </NavLink>
+            {/* Second Nav */}
+            {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+            <Bars/>
+          </NavMenu>
+        </Nav>
+      </>
+    );
+  };
+  //   <AppBar className="Appbar">
+  //     <Container maxWidth="xxl">
+  //       <Toolbar disableGutters>
+  //         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+  //           <IconButton
+  //             size="large"
+  //             aria-label="account of current user"
+  //             aria-controls="menu-appbar"
+  //             aria-haspopup="true"
+  //             onClick={handleOpenNavMenu}
+  //             color="inherit"
+  //           >
+  //             <MenuIcon />
+  //           </IconButton>
+  //           <Menu
+  //             id="menu-appbar"
+  //             anchorEl={anchorElNav}
+  //             anchorOrigin={{
+  //               vertical: 'bottom',
+  //               horizontal: 'right',
+  //             }}
+  //             keepMounted
+  //             transformOrigin={{
+  //               vertical: 'top',
+  //               horizontal: 'right',
+  //             }}
+  //             open={Boolean(anchorElNav)}
+  //             onClose={handleCloseNavMenu}
+  //             sx={{
+  //               display: { xs: 'block', md: 'none' },
+  //             }}
+  //           >
+  //             {pages.map((page) => (
+  //               <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+  //               <Link to={page.path}>
+  //               <Typography textAlign="center"  sx={{
+  //                 mr: 2,
+  //                 display: { xs: 'flex', md: 'none' },
+  //                 flexGrow: 1,
+  //                 fontFamily: 'Poppins',
+  //                 fontStyle: 'normal',
+  //                 fontWeight: 600,
+  //                 fontSize: '13px',
+  //                 lineHeight: '20px',
+  //                 position: 'absolute', 
+  //                 color: '#000000',
+  //                 textDecoration: 'none'
+  //               }}>{page.name}</Typography></Link>
+  //             </MenuItem>
+  //             ))}
+  //           </Menu>
+  //         </Box>
+  //         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+  //           {pages.map((page) => (
+  //               <Link to={page.path}>
+  //               <Button
+  //                 key={page.id}
+  //                 onClick={handleCloseNavMenu}
+  //                 sx={{ my: 2, color: 'white', display: 'block',
+  //                 fontFamily: 'Poppins',
+  //                 fontStyle: 'normal',
+  //                 fontWeight: 600,
+  //                 fontSize: '13px',
+  //                 lineHeight: '20px', }}
+  //               >
+  //                 {page.name}
+  //               </Button></Link>
+  //           ))}
+  //         </Box>
+  //       </Toolbar>
+  //     </Container>
+  //   </AppBar>
+  // );
 export default NavBar;
