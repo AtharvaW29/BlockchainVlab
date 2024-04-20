@@ -5,9 +5,16 @@ import CertificateContract from '../../../contracts/Certificate.json';
 import FailedBlockchain from '../../other/error/failed/Failed';
 
 // import CertificateContract from '../../../contracts/Contract.json';
-
 import './ViewCertificate.css';
+import PersistentDrawerLeft from '../../other/drawer/Drawer';
 
+const pages = [
+    { id: 1, name: 'Aim', path: '/Expt1' },
+    { id: 2, name: 'Theory', path: '/Theory' },
+    { id: 3, name: 'Procedure', path: '/Procedure' },
+    { id: 4, name: 'Simulation', path: '/Simulation' },
+    { id: 5, name: 'Observation', path: '/Observation' }
+  ];
 class ViewCertificate extends Component {
     constructor(props) {
         super(props);
@@ -119,6 +126,7 @@ class ViewCertificate extends Component {
         } else {
             return (
                 <div className="view-certificate">
+                    <PersistentDrawerLeft pages={pages}/>
                     <div className="account-address">
                         <dl className="dl-horizontal row">
                             <dt className="col-5">Ethereum Account Address: </dt>

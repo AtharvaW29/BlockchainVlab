@@ -2,16 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Homepage.css'
 import Footer from '../../components/other/navbar/Footer';
-import Navbar from 'react-navbar/dist/Navbar';
+import Navbar from '../../components/other/navbar/Navbar';
 
 function HomePage() {
   return (
     <>
     <div className="home-page">
+    <Navbar/>
       <header className="hero">
         <div className="hero-content">
           <h1 className="title">Blockchain Virtual Lab</h1>
-          <p className="subtitle">Experience the Future of Trust</p>
+          <p className="subtitle">Learn the fundamentals of Blockchain here</p>
           <Link to="/experiments" className="btn btn-primary">Start Exploring</Link>
         </div>
       </header>
@@ -48,10 +49,7 @@ function HomePage() {
           </div>
         </div>
       </section>
-      <footer className="footer">
-        
-        <p>&copy; 2024 Blockchain Virtual Lab</p>
-      </footer>
+      <Footer/>
     </div>
     </>
   );

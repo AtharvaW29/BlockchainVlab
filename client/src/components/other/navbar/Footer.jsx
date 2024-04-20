@@ -17,15 +17,25 @@ function Footer(){
                     </MDBRipple>
                 </MDBCol>
                 <section className=''>
-                    <p className='d-flex justify-content-center align-items-center'>
-                    <span className='me-3'>Register for free</span>
+                    <p className='d-flex justify-content-center align-items-center space-x-2'>
+                    <a href='https://www.linkedin.com/in/drhbhor-3a721039/' className='text-white'>
+                        Guided by: Dr. Harsh Bhor 
+                    </a>
+                    <a href='https://www.linkedin.com/in/dr-vijaya-pinjarkar-2502ab101/' className='text-white'>
+                        &  Dr. Vijaya Pinjarkar
+                    </a>
                     </p>
                 </section>
             </MDBContainer>
-            <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-                © 2020 Copyright:
-                <a className='text-white' href='https://mdbootstrap.com/'>
-                    MDBootstrap.com
+            <div className='text-center p-3 space-x-2' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+                <a className='text-white' href='https://www.linkedin.com/in/atharva-wagh-1974ab248/'>
+                Developed by: Atharva Wagh,
+                </a>
+                <a className='text-white' href='https://www.linkedin.com/in/aditya-wagh-306223229/'>
+                Aditya Wagh,
+                </a>
+                <a className='text-white' href='https://www.linkedin.com/in/vineet-sharma01/'>
+                & Vineet Sharma
                 </a>
             </div>
         </MDBFooter>

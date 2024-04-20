@@ -6,6 +6,9 @@
     padding-top: 1%;
     background-size: cover;
     text-align: center;
+    /* height: 50em; */
+    display: flex;
+    flex-direction: column;
 }
 
 .h1{
@@ -27,9 +30,10 @@
 .section{
     padding-left: 3%;
     padding-right: 3%; 
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: 'Times New Roman', Times, serif;
     text-align: justify;
+    margin-top: 15px;
 }
 
 .text-center_text-white{

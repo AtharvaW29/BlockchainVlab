@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import IconButton from '@mui/material/IconButton';
-
 import web3 from '../../../getWeb3';
 import CertificateContract from '../../../contracts/Certificate.json';
 import FailedBlockchain from '../../other/error/failed/Failed';
-//import CertificateContract from '../../../contracts/Contract.json';
 import Loader from '../../other/loader/Loader';
-
 import './AddCertificate.css';
+import PersistentDrawerLeft from '../../other/drawer/Drawer'
 
 const GAS_LIMIT = 6721975;
-
+const pages = [
+    { id: 1, name: 'Aim', path: '/Expt1' },
+    { id: 2, name: 'Theory', path: '/Theory' },
+    { id: 3, name: 'Procedure', path: '/Procedure' },
+    { id: 4, name: 'Simulation', path: '/Simulation' },
+    { id: 5, name: 'Observation', path: '/Observation' }
+  ];
+  
 class AddCertificate extends Component {
     constructor(props) {
         super(props);
@@ -72,16 +76,18 @@ class AddCertificate extends Component {
                         isFailed: true,
                     });
                 }
+                console.log("Contract Address: " + CertificateContract.networks[5777])
                 console.log('metamask account :-', accounts[0]);
-                await web3.eth.accounts.wallet.add(accounts[0]);
+                // web3.eth.accounts.wallet.add(accounts[0]);
+                web3.eth.accounts.wallet.load(accounts[0])
     
                 const networkId = await web3.eth.net.getId();
+                console.log("Network ID is: ", networkId)
                 const deployedNetwork = CertificateContract.networks[networkId];
                 const instance = new web3.eth.Contract(
                     CertificateContract.abi,
                     '0xD84A684B6E70F225a51491e485Aa4f3EDD76a722',
                 );
-                console.log(instance)
     
                 this.setState({
                     web3,
@@ -148,7 +154,7 @@ class AddCertificate extends Component {
             courseName: this.state.courseName,
             issuingAuthority: this.state.issuingAuthority,
             issueDate: Date.parse(this.state.issueDate),
-           // receiverAddress: this.state.receiverAddress,
+            receiverAddress: this.state.receiverAddress,
             accountAddress: this.state.account,
         }
 
@@ -285,24 +291,22 @@ class AddCertificate extends Component {
 
         else {
             return (
-                <div>
+                <div className="bg-gradient-to-br from-white to-white min-h-screen text-black justify-center items-center">
+                    <PersistentDrawerLeft pages={pages} />
                     <div className="account-address">
                         <dl className="dl-horizontal row">
                             <dt className="col-5">Ethereum Account Address: </dt>
                             <dd className="col-7">{this.state.account}</dd>
                         </dl>
                     </div>
-                    <div>
-                        <Typography variant="h2" 
+                        <span variant="h2" className='mt-10 mb-10 justify-center items-center'
                         style={{
-                            color:'#883A92',
                             fontFamily: 'Myriad Pro',
                             fontSize: 28,
-                            fontWeight: 600
+                            fontWeight: 600,
                         }}>
                             Study the Code below Carefully and follow the given steps
-                        </Typography>
-                    </div>
+                        </span>
                 <Container
                 sx={{
                     display: {md:'flex', xs:'block', lg: 'block'},
@@ -413,12 +417,11 @@ class AddCertificate extends Component {
                                     className="form-control"
                                     name="receiveraddress"
                                     value={this.state.receiverAddress}
-                                    onChange={this.handleChange}
+                                    onChange={this.state.receiverAddress}
                                     placeholder="e.g.: 0xsdhijhojso"
                                 />
                             </div>
                         </div> */}
-                        <br />
                         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit Certificate</button>
                     </form>
                     </Container>
@@ -426,30 +429,30 @@ class AddCertificate extends Component {
                         {this.state.isReceiptGenerated ?
                             <div className="receipt">
                                 <h1 className="table-title">Transaction Receipt</h1>
-                                <table>
+                                <table className="border-blue-900 border-4">
                                     <tbody>
-                                        <tr>
-                                            <td>Transaction Hash </td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Transaction Hash </td>
                                             <td>{this.state.receipt.transactionHash}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Block Hash </td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Block Hash </td>
                                             <td>{this.state.receipt.blockHash}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Block Number </td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Block Number </td>
                                             <td>{this.state.receipt.blockNumber}</td>
                                         </tr>
-                                        <tr>
-                                            <td>From Account</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">From Account</td>
                                             <td>{this.state.receipt.from}</td>
                                         </tr>
-                                        <tr>
-                                            <td>To Account</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">To Account</td>
                                             <td>{this.state.receipt.to}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Gas Used</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Gas Used</td>
                                             <td>{this.state.receipt.gasUsed}</td>
                                         </tr>
                                     </tbody>

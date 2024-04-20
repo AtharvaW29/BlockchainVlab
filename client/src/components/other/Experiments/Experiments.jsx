@@ -5,6 +5,7 @@ import image1 from "../../../assets/images/Expt1.jpg";
 import image2 from "../../../assets/images/Expt2.jpg";
 import image3 from "../../../assets/images/Expt3.jpg";
 import image4 from "../../../assets/images/Expt4.jpg";
+import image5 from "../../../assets/images/Expt5.jpg";
 
 const products =[
     {id:1, name: 'Experiment 1: Creating a Block', description: 'Create a block for given logic', image: image1,  path: '/Expt1'},

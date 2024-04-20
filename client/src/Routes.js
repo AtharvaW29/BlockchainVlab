@@ -19,7 +19,6 @@ import Homepage from './pages/Homepage/Homepage'
 class Routes extends Component {
   render () {
     return (
-      <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Homepage } />
           <Route exact path="/Experiments" component={ LandingPage } />
@@ -36,7 +35,6 @@ class Routes extends Component {
           <Route path="/Expt4" component={ ExptFour } />
           <Route component={ Page404 } />
         </Switch>
-      </BrowserRouter>
     );
   };
 };

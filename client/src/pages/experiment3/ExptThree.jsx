@@ -1,74 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { SHA256 } from 'crypto-js';
 import { Typography, TextField, Grid, CardContent, Card, Button } from '@mui/material'
+import { Blockchain, Block } from './chain/blockchain';
+
 
 const ExptThree = () => {
-
+  const [blocks, setBlocks] = useState([]);
   const [backgroundColor, setBackgroundColor] = useState('lightseagreen');
 
-  const [blocks, setBlocks] = useState([
-    { id: 1, blockNo: 1, nonce: 0, data: "some transaction data", prevHash: "0xea8834de1efb07f2bce756291b3e108123ba96456aec14283f072c4fcfd1324d", currentHash: "", color: backgroundColor },
-    { id: 2, blockNo: 2, nonce: 0, data: "some transaction data", prevHash: "", currentHash: "", color: backgroundColor },
-    { id: 3, blockNo: 3, nonce: 0, data: "some transaction data", prevHash: "", currentHash: "", color: backgroundColor },
-    { id: 4, blockNo: 4, nonce: 0, data: "some transaction data", prevHash: "", currentHash: "", color: backgroundColor },
-    { id: 5, blockNo: 5, nonce: 0, data: "some transaction data", prevHash: "", currentHash: "", color: backgroundColor }
-  ]);
-
   useEffect(() => {
-    const markBlocksForMining = (blockIndex) => {
-      const updatedBlocks = [...blocks];
-      for (let i = blockIndex; i< updatedBlocks.length; i++) {
-        updatedBlocks[i].needMining = true;
+    const initializeBlockchain = () => {
+      let myBlockchain = new Blockchain();
+      let blockchainBlocks = [];
+      for (let i = 0; i < myBlockchain.chain.length; i++) {
+        const block = myBlockchain.chain[i];
+        blockchainBlocks.push({
+          id: i + 1,
+          blockNo: block.blockNo,
+          nonce: block.nonce,
+          data: block.data,
+          prevHash: block.prevHash,
+          currentHash: block.currentHash,
+          color: backgroundColor
+        });
       }
-      setBlocks(updatedBlocks);
+      setBlocks(blockchainBlocks);
     };
-
-    for (let i = 0; i < blocks.length; i++) {
-      if(blocks[i].needMining){
-        continue;
-      }
-      const block = blocks[i];
-      if(block.nonce !== 0 || block.data !== "some transaction data" || block.prevHash !== "0xea8834de1efb07f2bce756291b3e108123ba96456aec14283f072c4fcfd1324d") {
-        markBlocksForMining(i);
-        break;
-      }
-    }
-  }, [blocks]);
+    initializeBlockchain();
+  }, [backgroundColor]);
 
   const mineBlock = (blockIndex) => {
-    const difficultyMajor = 4;
-    const difficultyMinor = 15;
-    const maximumNonce = 8;
-
-    let hash = '';
-    let nonceAttempt = 0;
-    const block = blocks[blockIndex];
-
-    const calculateHash = (nonce) => {
-      const hashInput = block.blockNo + nonce + block.data + block.prevHash;
-      return SHA256(hashInput).toString();
-    };
-
-    const pattern = '0'.repeat(difficultyMajor) + difficultyMinor.toString(16);
-    const patternLen = pattern.length;
-
-    while (nonceAttempt <= maximumNonce) {
-      hash = calculateHash(nonceAttempt);
-      if (hash.substring(0, difficultyMajor) === '0'.repeat(difficultyMajor)) {
-        break;
-      }
-      nonceAttempt++;
-    }
-
-    const updatedBlocks = [...blocks];
-    updatedBlocks[blockIndex] = { ...block, nonce: nonceAttempt, currentHash: hash };
+    let updatedBlocks = [...blocks];
+    updatedBlocks[blockIndex].nonce++;
+    updatedBlocks[blockIndex].currentHash = updatedBlocks[blockIndex].calculateHash();
     setBlocks(updatedBlocks);
   };
 
   const mineAllBlocks = () => {
-    for (let i = 0; i < blocks.length; i++) {
+    let updatedBlocks = [...blocks];
+    for (let i = 0; i < updatedBlocks.length; i++) {
       mineBlock(i);
     }
+    setBlocks(updatedBlocks);
   };
 
   return (
@@ -83,70 +55,73 @@ const ExptThree = () => {
         <Grid container alignItems='center' spacing={4}>
           {blocks.map((block) => (
             <Grid item key={block.id} xs={12} sm={6} md={4} lg={3}>
-              {/* <Block block={block} mineBlock={() => mineBlock(block.id - 1)} /> */}
-            <Card sx={{ maxWidth: 445, backgroundColor: block.color}}>
-              <CardContent>
-                <Grid
-                  container
-                  spacing={2}
-                  sx={{ display: "flex", flexDirection: "column" }}
-                >
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      title="Block No."
-                      variant="outlined"
-                      fullWidth
-                      type="number"
-                      placeholder={block.blockNo}
-                    ></TextField>
+              <Card sx={{ maxWidth: 445, backgroundColor: block.color}}>
+                <CardContent>
+                  <Grid
+                    container
+                    spacing={2}
+                    sx={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        title="Block No."
+                        variant="outlined"
+                        fullWidth
+                        type="number"
+                        value={block.blockNo}
+                        disabled
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        title="Nonce"
+                        variant="outlined"
+                        fullWidth
+                        type="number"
+                        value={block.nonce}
+                        disabled
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        title="Data"
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        fullWidth
+                        value={block.data}
+                        disabled
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        title="Previous Hash"
+                        variant="outlined"
+                        fullWidth
+                        value={block.prevHash}
+                        disabled
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        title="Current Hash"
+                        variant="outlined"
+                        fullWidth
+                        value={block.currentHash}
+                        disabled
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      title="Nonce"
-                      variant="outlined"
-                      fullWidth
-                      type="number"
-                      placeholder={block.nonce}
-                    ></TextField>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      title="Data"
-                      variant="outlined"
-                      multiline
-                      rows={4}
-                      fullWidth
-                      placeholder={block.data}
-                    ></TextField>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      title="Previous Hash"
-                      variant="outlined"
-                      fullWidth
-                      placeholder={block.prevHash}
-                      disabled
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      title="Current Hash"
-                      variant="outlined"
-                      fullWidth
-                      placeholder={block.currentHash}
-                      disabled
-                    />
-                  </Grid>
-                </Grid>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={mineBlock(block.id)}
-                  style={{ marginTop: "50px" }}>
-                  Mine
-                </Button>
-              </CardContent>
-            </Card>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => mineBlock(block.id - 1)}
+                    style={{ marginTop: "50px" }}
+                  >
+                    Mine
+                  </Button>
+                </CardContent>
+              </Card>
             </Grid>
           ))}
         </Grid>

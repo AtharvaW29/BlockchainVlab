@@ -65,13 +65,13 @@ const Block = ({ block }) => {
         </Grid>
 
         <Button
-          variant="contained"
-          color="primary"
-          onClick={block.mineBlock}
-          style={{ marginTop: "50px" }}
-        >
-          Mine
-        </Button>
+        variant="contained"
+        color="primary"
+        onClick={() => mineBlock(block.id - 1)} // Pass the block index instead of block id
+        style={{ marginTop: "50px" }}>
+        Mine
+      </Button>
+        
       </CardContent>
     </Card>
   );
