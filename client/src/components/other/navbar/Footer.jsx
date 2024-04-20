@@ -10,7 +10,9 @@ function Footer(){
                     <MDBRipple
                         rippleColor='light'
                         className='bg-image_hover-overlay_shadow-1-strong_rounded'>
+                        <a href='./'>
                         <img src={require('./logo.jpeg')} className='w-100' />
+                        </a>
                         <div
                           className='mask'
                          style={{ backgroundColor: 'rgba(251, 251, 251, 0.2)' }}></div>

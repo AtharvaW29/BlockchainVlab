@@ -1,20 +1,21 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import PersistentDrawerLeft from '../../components/other/drawer/Drawer';
+import Footer from '../../components/other/navbar/Footer';
 
 const pages = [
   { id: 1, name: 'Aim', path: '/Expt1' },
   { id: 2, name: 'Theory', path: '/Theory' },
   { id: 3, name: 'Procedure', path: '/Procedure' },
   { id: 4, name: 'Simulation', path: '/Simulation' },
-  { id: 5, name: 'Observation', path: '/Observation' }
-];
+  { id: 5, name: 'Observation', path: '/Observation' },
+{ id: 6, name: 'Feedback', path: '' }];
 
 const Procedure = () => {
   return (
-    <div className="bg-white min-h-screen text-black">
+    <div className="bg-white min-h-screen text-black flex flex-col justify-center items-center">
       <PersistentDrawerLeft pages={pages} />
-      <div className="p-8">
+      <div className="p-8 pb-20">
         <Typography variant="h3" gutterBottom fontFamily='Poppins'>
           <b>Procedure:</b>
         </Typography>
@@ -80,6 +81,9 @@ const Procedure = () => {
             </tbody>
           </table>
         </div>
+      </div>
+      <div className='w-full mt-24 pt-24'>
+        <Footer/>
       </div>
     </div>
   );

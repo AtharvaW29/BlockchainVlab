@@ -7,8 +7,8 @@ const Landingpage = () => {
   return (
     <>
     <NavBar/>
-    <div className='align' style={{height: '45em'}}>  
-    <div className='exp flex justify-center items-center'>
+    <div className='flex flex-col justify-between items-center min-h-screen'>  
+  <div className='flex flex-col justify-center items-center'>
   <table className='exp_table1 border border-gray-300 rounded-lg p-4'>
     <div className='content'>
       <a href='/Expt1'>
@@ -19,9 +19,6 @@ const Landingpage = () => {
       <p className='text-sm text-gray-600'>Creating a block for given logic</p>
     </div>
   </table>
-</div>
-
-<div className='exp flex justify-center items-center'>
   <table className='exp_table2 border border-gray-300 rounded-lg p-4'>
     <div className='content'>
       <a href='/Expt2'>
@@ -32,9 +29,6 @@ const Landingpage = () => {
       <p className='text-sm text-gray-600'>Perform Experiment 1 before attempting</p>
     </div>
   </table>
-</div>
-
-<div className='exp flex justify-center items-center'>
   <table className='exp_table3 border border-gray-300 rounded-lg p-4'>
     <div className='content'>
       <a href='/Expt3'>
@@ -45,9 +39,6 @@ const Landingpage = () => {
       <p className='text-sm text-gray-600'>Verify the working of a virtual blockchain emulator</p>
     </div>
   </table>
-</div>
-
-<div className='exp flex justify-center items-center'>
   <table className='exp_table4 border border-gray-300 rounded-lg p-4'>
     <div className='content'>
       <a href='/Expt4'>
@@ -59,9 +50,9 @@ const Landingpage = () => {
     </div>
   </table>
 </div>
-
-          </div>
-         <Footer/>
+<div className='w-full'>
+<Footer/></div>
+</div>
     </>
   )
 }

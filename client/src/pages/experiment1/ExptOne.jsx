@@ -7,8 +7,8 @@ const pages = [
   { id: 2, name: 'Theory', path: '/Theory' },
   { id: 3, name: 'Procedure', path: '/Procedure' },
   { id: 4, name: 'Simulation', path: '/Simulation' },
-  { id: 5, name: 'Observation', path: '/Observation' }
-];
+  { id: 5, name: 'Observation', path: '/Observation' },
+{ id: 6, name: 'Feedback', path: '' }];
 
 const ExptOne = () => {
   return (

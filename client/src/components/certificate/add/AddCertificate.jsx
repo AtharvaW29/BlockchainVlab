@@ -9,7 +9,8 @@ import CertificateContract from '../../../contracts/Certificate.json';
 import FailedBlockchain from '../../other/error/failed/Failed';
 import Loader from '../../other/loader/Loader';
 import './AddCertificate.css';
-import PersistentDrawerLeft from '../../other/drawer/Drawer'
+import PersistentDrawerLeft from '../../other/drawer/Drawer';
+import Footer from '../../other/navbar/Footer';
 
 const GAS_LIMIT = 6721975;
 const pages = [
@@ -291,15 +292,15 @@ class AddCertificate extends Component {
 
         else {
             return (
-                <div className="bg-gradient-to-br from-white to-white min-h-screen text-black justify-center items-center">
+                <div className="bg-white text-black flex flex-col justify-center items-center w-full">
                     <PersistentDrawerLeft pages={pages} />
-                    <div className="account-address">
+                    <div className="account-address w-50">
                         <dl className="dl-horizontal row">
                             <dt className="col-5">Ethereum Account Address: </dt>
                             <dd className="col-7">{this.state.account}</dd>
                         </dl>
                     </div>
-                        <span variant="h2" className='mt-10 mb-10 justify-center items-center'
+                        <span variant="h2" className='mt-10 mb-10'
                         style={{
                             fontFamily: 'Myriad Pro',
                             fontSize: 28,
@@ -459,6 +460,9 @@ class AddCertificate extends Component {
                                 </table>
                             </div>
                              : null}
+                    </div>
+                    <div className='w-full'>
+                    <Footer/>
                     </div>
                 </div>
             );
