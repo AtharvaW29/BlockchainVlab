@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import { Typography, TextField, Grid, CardContent, Card, Button } from '@mui/material'
 import { SHA256 } from 'crypto-js';
+import PersistentDrawerLeft from '../../components/other/drawer/Drawer';
+import Footer from '../../components/other/navbar/Footer';
 
+const pages = [{ id: 1, name: 'Aim', path: '/Expt4/Aim' },
+              { id: 2, name: 'Theory', path: '/Expt4/Theory' },
+              { id: 3, name: 'Procedure', path: '/Expt4/Procedure' },
+              { id: 4, name: 'Experiment', path: '/Expt4/Experiment' },
+              { id: 5, name: 'Feedback', path: '' }];
 const ExptFour = () => {
 
     const [backgroundColor, setBackgroundColor] = useState('lightseagreen');
@@ -36,7 +43,8 @@ const ExptFour = () => {
     };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div className='flex flex-col justify-between items-center min-h-screen'>
+      <PersistentDrawerLeft pages={pages} />
     <div style={{marginTop: 20, backgroundColor:'lightcyan', alignContent:'center', width: 'relative'}} >
       <Typography fontSize={28} fontWeight={700} fontFamily={'Poppins'}>
         <h1>The Block and Its Components</h1>
@@ -105,6 +113,9 @@ const ExptFour = () => {
       </CardContent>
     </Card>
     </div>
+      <div className='w-full'>
+                    <Footer/>
+      </div>
     </div>
   )
 }

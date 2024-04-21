@@ -3,8 +3,16 @@ import web3 from '../../../getWeb3';
 import CertificateContract from '../../../contracts/Certificate.json';
 import FailedBlockchain from '../../other/error/failed/Failed';
 import './GetTransactionDetails.css';
+import PersistentDrawerLeft from '../../other/drawer/Drawer';
+import Footer from '../../other/navbar/Footer';
 
 const etherscanUrl = 'https://etherscan.io/';
+
+const pages = [{ id: 1, name: 'Aim', path: '/Expt2/Aim' },
+              { id: 2, name: 'Theory', path: '/Expt2/Theory' },
+              { id: 3, name: 'Procedure', path: '/Expt2/Procedure' },
+              { id: 4, name: 'Experiment', path: '/Expt2/Experiment' },
+              { id: 5, name: 'Feedback', path: '' }];
 class GetTransactionDetails extends Component {
     constructor(props) {
         super(props);
@@ -102,8 +110,9 @@ class GetTransactionDetails extends Component {
         }
         else {
             return (
-                <div className="get-transaction-details">
-                    <div className="account-address">
+                <div className="flex flex-col justify-between items-center min-h-screen">
+                    <PersistentDrawerLeft pages={pages} />
+                    <div className="account-address w-50">
                         <dl className="dl-horizontal row">
                             <dt className="col-5">Ethereum Account Address: </dt>
                             <dd className="col-7">{this.state.account}</dd>
@@ -146,60 +155,63 @@ class GetTransactionDetails extends Component {
                         {this.state.isFetched ?
                             <div className="transaction-details">
                                 <h1 className="table-title">Transaction Details</h1>
-                                <table>
+                                <table className="border-blue-900 border-4">
                                     <tbody>
-                                        <tr>
-                                            <td>Transaction Hash </td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Transaction Hash </td>
                                             <td>{this.state.transactionHash}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Block Number </td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Block Number </td>
                                             <td>{this.state.transactionDetails.blockNumber}</td>
                                         </tr>
-                                        <tr>
-                                            <td>From Account</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">From Account</td>
                                             <td>{this.state.transactionDetails.from}</td>
                                         </tr>
-                                        <tr>
-                                            <td>To Account</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">To Account</td>
                                             <td>{this.state.transactionDetails.to}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Gas Used</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Gas Used</td>
                                             <td>{this.state.transactionDetails.gas}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Gas Price</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Gas Price</td>
                                             <td>{this.state.transactionDetails.gasPrice}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Hash</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Hash</td>
                                             <td>{this.state.transactionDetails.hash}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Nonce</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Nonce</td>
                                             <td>{this.state.transactionDetails.nonce}</td>
                                         </tr>
-                                        <tr>
-                                            <td>R</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">R</td>
                                             <td>{this.state.transactionDetails.r}</td>
                                         </tr>
-                                        <tr>
-                                            <td>S</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">S</td>
                                             <td>{this.state.transactionDetails.s}</td>
                                         </tr>
-                                        <tr>
-                                            <td>V</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">V</td>
                                             <td>{this.state.transactionDetails.v}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Transaction Index</td>
+                                        <tr className="border-blue-900 border-4">
+                                            <td className="border-blue-900 border-4">Transaction Index</td>
                                             <td>{this.state.transactionDetails.transactionIndex}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                              : null}
+                    </div>
+                    <div className='w-full'>
+                    <Footer/>
                     </div>
                 </div>
             );

@@ -23,7 +23,7 @@ const ExptOne = () => {
             <img src={ethereum} alt="Blockchain Image" className="w-full rounded-lg shadow-lg" />
         </div>
         <div className="mt-8">
-            <a href="/Procedure" className="py-2 px-6 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg shadow-lg transition duration-300">Start Experiment</a>
+            <a href="/Theory" className="py-2 px-6 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg shadow-lg transition duration-300">Start Experiment</a>
         </div>
     </div>
     <p className="mt-8 text-sm text-center">Powered by Your Imagination</p>

@@ -21,7 +21,7 @@ const Landingpage = () => {
   </table>
   <table className='exp_table2 border border-gray-300 rounded-lg p-4'>
     <div className='content'>
-      <a href='/Expt2'>
+      <a href='/Expt2/Aim'>
         <h4 className='text-lg font-semibold text-blue-900'>Experiment 2: Block Validation</h4>
       </a>
     </div>
@@ -31,7 +31,7 @@ const Landingpage = () => {
   </table>
   <table className='exp_table3 border border-gray-300 rounded-lg p-4'>
     <div className='content'>
-      <a href='/Expt3'>
+      <a href='/Expt3/Aim'>
         <h4 className='text-lg font-semibold text-blue-900'>Experiment 3: Blockchain Emulator</h4>
       </a>
     </div>
@@ -41,7 +41,7 @@ const Landingpage = () => {
   </table>
   <table className='exp_table4 border border-gray-300 rounded-lg p-4'>
     <div className='content'>
-      <a href='/Expt4'>
+      <a href='/Expt4/Aim'>
         <h4 className='text-lg font-semibold text-blue-900'>Experiment 4: Mining the Block</h4>
       </a>
     </div>
